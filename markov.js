@@ -42,19 +42,23 @@ class MarkovMachine {
     let keysArr = Array.from(chains.keys())
 
     for (let i = 0; i < numWords; i++) {
-      let word1 = keysArr[MarkovMachine.choice(keysArr)];
+      let word1 = MarkovMachine.choice(keysArr);
       let valArr = chains.get(word1);
-      let word2 = valArr[MarkovMachine.choice(valArr)]
+      let word2 = MarkovMachine.choice(valArr)
 
-      str += word1;
+      str += word1 + ' ';
       if (word2 != null) {
-        str += word2
+        str += word2 + ' '
       }
     }
-    return str
+    console.log(str)
   }
 }
 
-let mm = new MarkovMachine("the cat in the hat")
-mm.makeText();
-mm.makeText(numWords = 50);
+// let mm = new MarkovMachine("the cat in the hat")
+// mm.makeText();
+// mm.makeText(numWords = 50);
+
+module.exports = {
+  MarkovMachine,
+};
